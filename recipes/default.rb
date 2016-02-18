@@ -39,6 +39,11 @@ file '/etc/cups/ssl/server.crt' do
   not_if { ::File.symlink?('/etc/cups/ssl/server.crt') }
 end
 
+# Create the GoodCity print users.
+users_manage node['crf-cups']['printusers']['group'] do
+  data_bag node['crf-cups']['printusers']['data_bag']
+end
+
 # Create the certificates.
 certificate_manage 'cups' do
   data_bag      node['crf-cups']['certificate']['data_bag']

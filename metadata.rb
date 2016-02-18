@@ -7,7 +7,8 @@ long_description 'Installs/Configures crf-cups'
 version          '0.1.0'
 
 depends 'cups'
-depends 'certificate'
+depends 'certificate', '~> 1.0'
+depends 'users',       '~> 2.0'
 
 %w(ubuntu debian redhat centos amazon scientific smartos).each do |os|
   supports os
